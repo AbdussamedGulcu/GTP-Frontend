@@ -1,0 +1,320 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* GTP Deep Space Purple Theme - #34044d base */
+  --background: #34044d;
+  --header-bg: #21044d;
+  --foreground: #f0f0ff;
+  --card: rgba(20, 200, 100, 0.12);
+  --card-foreground: #f0f0ff;
+  --popover: rgba(20, 200, 100, 0.2);
+  --popover-foreground: #f0f0ff;
+  
+  /* Vibrant Neon Accent Colors */
+  --neon-purple: #8b2aa8;
+  --neon-green: #2ecc40;
+  --neon-teal: #0a9eb8;
+  
+  --primary: #8b2aa8;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(10, 158, 184, 0.4);
+  --secondary-foreground: #0ac5e8;
+  --muted: rgba(255, 255, 255, 0.08);
+  --muted-foreground: rgba(240, 240, 255, 0.7);
+  --accent: #2ecc40;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: rgba(46, 204, 64, 0.4);
+  --input: rgba(255, 255, 255, 0.08);
+  --ring: #2ecc40;
+  
+  --radius: 1.25rem;
+  
+  /* Vibrant Green Glass effect variables */
+  --glass-bg: rgba(30, 200, 90, 0.08);
+  --glass-border: rgba(46, 204, 64, 0.25);
+  --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(46, 204, 64, 0.1);
+  
+  /* Glass hover states */
+  --glass-bg-hover: rgba(30, 200, 90, 0.04);
+  --glass-border-hover: rgba(46, 204, 64, 0.5);
+}
+
+@theme inline {
+  --font-sans: var(--font-inter), 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-display: var(--font-orbitron), 'Orbitron', sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-neon-purple: var(--neon-purple);
+  --color-neon-green: var(--neon-green);
+  --color-neon-teal: var(--neon-teal);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+  --color-header-bg: var(--header-bg);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Glassmorphism utilities - Vibrant Green */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-strong {
+  background: rgba(30, 200, 90, 0.15);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(46, 204, 64, 0.3);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover animation class */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: scale(1.03);
+  box-shadow: 0 12px 50px rgba(0, 0, 0, 0.6), 
+              0 0 80px rgba(46, 204, 64, 0.2),
+              inset 0 0 30px rgba(46, 204, 64, 0.05);
+}
+
+/* Neon glow effects - More Vibrant */
+.glow-purple {
+  box-shadow: 0 0 25px rgba(139, 42, 168, 0.5), 
+              0 0 50px rgba(139, 42, 168, 0.3),
+              0 0 80px rgba(139, 42, 168, 0.15),
+              inset 0 0 25px rgba(139, 42, 168, 0.1);
+}
+
+.glow-green {
+  box-shadow: 0 0 25px rgba(46, 204, 64, 0.5), 
+              0 0 50px rgba(46, 204, 64, 0.3),
+              0 0 80px rgba(46, 204, 64, 0.15),
+              inset 0 0 25px rgba(46, 204, 64, 0.1);
+}
+
+.glow-teal {
+  box-shadow: 0 0 25px rgba(10, 158, 184, 0.5), 
+              0 0 50px rgba(10, 158, 184, 0.3),
+              0 0 80px rgba(10, 158, 184, 0.15),
+              inset 0 0 25px rgba(10, 158, 184, 0.1);
+}
+
+.text-glow-purple {
+  text-shadow: 0 0 12px rgba(139, 42, 168, 1),
+               0 0 25px rgba(139, 42, 168, 0.7),
+               0 0 40px rgba(139, 42, 168, 0.4);
+}
+
+.text-glow-green {
+  text-shadow: 0 0 12px rgba(46, 204, 64, 1),
+               0 0 25px rgba(46, 204, 64, 0.7),
+               0 0 40px rgba(46, 204, 64, 0.4);
+}
+
+.text-glow-teal {
+  text-shadow: 0 0 12px rgba(10, 158, 184, 1),
+               0 0 25px rgba(10, 158, 184, 0.7),
+               0 0 40px rgba(10, 158, 184, 0.4);
+}
+
+/* Deep Space Background - #34044d base */
+.space-background {
+  background: #34044d;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Parallax star container - moves slower than content */
+.parallax-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  background: 
+    /* Deep purple nebula gradients */
+    radial-gradient(ellipse at 30% 20%, rgba(80, 15, 120, 0.4) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 60%, rgba(52, 4, 77, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, rgba(45, 3, 70, 0.6) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 30%, rgba(90, 20, 140, 0.25) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 70%, rgba(70, 10, 100, 0.3) 0%, transparent 45%);
+}
+
+/* Layer 1: Distant tiny stars - slowest parallax */
+.parallax-stars::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.38), transparent),
+    radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 200px 50px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1px 1px at 220px 180px, rgba(255,255,255,0.32), transparent),
+    radial-gradient(1px 1px at 260px 30px, rgba(255,255,255,0.28), transparent),
+    radial-gradient(1px 1px at 300px 100px, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1px 1px at 340px 70px, rgba(255,255,255,0.25), transparent),
+    radial-gradient(1px 1px at 380px 140px, rgba(255,255,255,0.38), transparent),
+    radial-gradient(1px 1px at 420px 20px, rgba(255,255,255,0.32), transparent),
+    radial-gradient(1px 1px at 460px 90px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1px 1px at 500px 160px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 540px 45px, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 580px 130px, rgba(255,255,255,0.28), transparent),
+    radial-gradient(1px 1px at 620px 85px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 660px 175px, rgba(255,255,255,0.33), transparent),
+    radial-gradient(1px 1px at 700px 25px, rgba(255,255,255,0.38), transparent);
+  background-size: 750px 200px;
+  animation: twinkle-slow 10s ease-in-out infinite alternate;
+}
+
+/* Layer 2: Mid-distance stars */
+.parallax-stars::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 100px 200px, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 240px 150px, rgba(255,255,255,0.48), transparent),
+    radial-gradient(1.5px 1.5px at 360px 220px, rgba(255,255,255,0.58), transparent),
+    radial-gradient(1.5px 1.5px at 480px 100px, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 560px 180px, rgba(255,255,255,0.52), transparent),
+    radial-gradient(1.5px 1.5px at 640px 50px, rgba(255,255,255,0.48), transparent),
+    radial-gradient(1.5px 1.5px at 720px 130px, rgba(255,255,255,0.55), transparent),
+    radial-gradient(1.5px 1.5px at 800px 200px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1.5px 1.5px at 60px 170px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 180px 210px, rgba(255,255,255,0.52), transparent),
+    radial-gradient(1.5px 1.5px at 300px 30px, rgba(255,255,255,0.45), transparent),
+    radial-gradient(1.5px 1.5px at 420px 160px, rgba(255,255,255,0.48), transparent),
+    radial-gradient(1.5px 1.5px at 540px 90px, rgba(255,255,255,0.52), transparent),
+    /* Brighter accent stars with subtle color variation */
+    radial-gradient(2px 2px at 180px 80px, rgba(200,220,255,0.75), transparent),
+    radial-gradient(2px 2px at 400px 180px, rgba(255,240,220,0.7), transparent),
+    radial-gradient(2px 2px at 620px 120px, rgba(220,200,255,0.72), transparent),
+    radial-gradient(2px 2px at 840px 60px, rgba(200,255,240,0.65), transparent),
+    radial-gradient(2px 2px at 260px 120px, rgba(255,230,200,0.68), transparent),
+    radial-gradient(2px 2px at 520px 40px, rgba(200,230,255,0.72), transparent);
+  background-size: 900px 250px;
+  animation: twinkle-fast 6s ease-in-out infinite alternate-reverse;
+}
+
+/* Third star layer for additional depth */
+.star-layer-deep {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300vh;
+  pointer-events: none;
+  z-index: 0;
+  background-image: 
+    radial-gradient(1px 1px at 35px 90px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 75px 20px, rgba(255,255,255,0.38), transparent),
+    radial-gradient(1px 1px at 115px 140px, rgba(255,255,255,0.32), transparent),
+    radial-gradient(1px 1px at 155px 60px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1px 1px at 195px 110px, rgba(255,255,255,0.28), transparent),
+    radial-gradient(1px 1px at 235px 190px, rgba(255,255,255,0.38), transparent),
+    radial-gradient(1px 1px at 275px 40px, rgba(255,255,255,0.32), transparent),
+    radial-gradient(1px 1px at 315px 170px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1px 1px at 355px 100px, rgba(255,255,255,0.28), transparent),
+    radial-gradient(1px 1px at 395px 50px, rgba(255,255,255,0.38), transparent),
+    radial-gradient(1px 1px at 435px 130px, rgba(255,255,255,0.32), transparent),
+    radial-gradient(1px 1px at 475px 80px, rgba(255,255,255,0.42), transparent),
+    radial-gradient(1px 1px at 515px 150px, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 555px 35px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 595px 115px, rgba(255,255,255,0.3), transparent);
+  background-size: 650px 180px;
+  animation: twinkle-slow 15s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle-slow {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+@keyframes twinkle-fast {
+  0% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+/* Subtle border glow animation - Green */
+@keyframes border-glow {
+  0%, 100% {
+    border-color: rgba(46, 204, 64, 0.25);
+    box-shadow: 0 0 15px rgba(46, 204, 64, 0.1);
+  }
+  50% {
+    border-color: rgba(46, 204, 64, 0.5);
+    box-shadow: 0 0 25px rgba(46, 204, 64, 0.2);
+  }
+}
+
+.border-glow-animate {
+  animation: border-glow 3s ease-in-out infinite;
+}
+
+/* Ensure content is above stars */
+.content-layer {
+  position: relative;
+  z-index: 1;
+}
