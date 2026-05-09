@@ -29,20 +29,36 @@ export const gameAchievements: Achievement[] = [
     points: 50
   },
   
-  // B Oyunu Başarımları
+  // B Oyunu Başarımları (Harvest Rush)
   {
-    id: "b-1",
+    id: "hr-1",
     gameId: 2,
-    title: "Hızlı Başlangıç",
-    description: "Oyunu 5 dakikada bitir.",
-    unlocked: true,
+    title: "İlk Hasat",
+    description: "Sepetine ilk meyveyi düşür ve hasata başla.",
+    unlocked: false,
+    points: 10
+  },
+  {
+    id: "hr-2",
+    gameId: 2,
+    title: "Altın Dokunuş",
+    description: "Nadir bulunan altın meşe palamudunu yakala.",
+    unlocked: false,
+    points: 50
+  },
+  {
+    id: "hr-3",
+    gameId: 2,
+    title: "Usta Çiftçi",
+    description: "Tek bir oyunda 50 skora ulaş.",
+    unlocked: false,
     points: 100
   },
   {
-    id: "b-2",
+    id: "hr-4",
     gameId: 2,
-    title: "Gizli Bölme",
-    description: "Oyun içindeki gizli odayı bul.",
+    title: "Kusursuz Tarım",
+    description: "Hiç can kaybetmeden 20 skora ulaş.",
     unlocked: false,
     points: 75
   }

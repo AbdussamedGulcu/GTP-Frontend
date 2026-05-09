@@ -6,13 +6,29 @@ import { gameAchievements } from "@/lib/achievements"
 import { Trophy, ArrowLeft, Target, Lock } from "lucide-react"
 import Link from "next/link"
 import { PageTransition } from "@/components/page-transition"
+import { useEffect, useState } from "react"
+import { Achievement } from "@/lib/achievements"
 
 export default function GameAchievementsPage() {
   const params = useParams()
   const gameId = Number(params.id)
   
   const game = allAvailableGames.find(g => g.id === gameId)
-  const achievements = gameAchievements.filter(a => a.gameId === gameId)
+  const defaultAchievements = gameAchievements.filter(a => a.gameId === gameId)
+  
+  const [achievements, setAchievements] = useState<Achievement[]>(defaultAchievements)
+
+  useEffect(() => {
+    // Merge unlocked status from localStorage
+    const savedUnlocks = localStorage.getItem(`gtp_achievements_${gameId}`)
+    if (savedUnlocks) {
+      const unlockedIds = JSON.parse(savedUnlocks) as string[]
+      setAchievements(prev => prev.map(a => ({
+        ...a,
+        unlocked: a.unlocked || unlockedIds.includes(a.id)
+      })))
+    }
+  }, [gameId])
   
   if (!game) {
     return (
